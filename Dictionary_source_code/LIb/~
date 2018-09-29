@@ -1,0 +1,132 @@
+#include <stdio.h>
+#include <string.h>
+	
+struct _TuLoai{
+	char Ten[50];
+	char Nghia[50][100];
+	int nNghia;
+};
+
+struct _Word{
+	char NghiaGoc[50];
+	char PhienAm[100];
+	_TuLoai TuLoai[5];
+	int nTuLoai;
+};
+
+_Word EmptyStruct;
+
+struct node
+{
+	_Word word;
+	struct node *pleft;
+	struct node *pright;
+};
+typedef node* tree;
+
+void init(tree &t)
+{
+	t = NULL;
+}
+
+void insert(tree &t, _Word data)
+{
+	if (t == NULL)
+	{
+		node *p = new node;
+		p->word = data;
+		p->pleft = p->pright = NULL;
+		t = p;
+	}
+	else
+	{
+		if (strcmp(t->word.NghiaGoc,  data.NghiaGoc) > 0)
+		{
+			insert(t->pleft, data);
+		}
+		else if (strcmp(t->word.NghiaGoc,  data.NghiaGoc) < 0)
+		{
+			insert(t->pright, data);
+		}
+	}
+}
+
+
+void XuatDanhSachWord (_Word word){
+	int count = 1;
+
+	printf("%d: +Nghia goc: %s\n", count, word.NghiaGoc);
+	printf("   +Phien am: %s\n", word.PhienAm);
+
+		for (int j=0; j < word.nTuLoai; j++){
+			printf("   +Tu loai: %s\n", word.TuLoai[j].Ten);
+			for (int k=0; k<word.TuLoai[j].nNghia; k++)
+				printf("   	->Nghia %d: %s\n", k+1, word.TuLoai[j].Nghia[k]);
+		}
+		printf("\n");
+		count++;
+}
+
+void nlr(tree t)
+{
+	if (t != NULL)
+	{
+		XuatDanhSachWord(t->word);
+		nlr(t->pleft);
+		nlr(t->pright);
+	}
+}
+
+
+int main(int argc, char *argv[])
+{
+	tree t;
+	init(t);
+
+	
+	_Word tu1;
+	strcpy (tu1.NghiaGoc, "hello");
+	strcpy (tu1.PhienAm, "@#@!");
+	
+	strcpy (tu1.TuLoai[0].Ten, "axzc xz czxaaa");
+	strcpy (tu1.TuLoai[0].Nghia[0], "vvS czxcvv");
+	strcpy (tu1.TuLoai[0].Nghia[1], "vvvxzcxzCxzv");
+	strcpy (tu1.TuLoai[0].Nghia[2], "vvC xZCzxvv");
+	strcpy (tu1.TuLoai[0].Nghia[3], "v Czxc xzvvv");
+	
+	strcpy (tu1.TuLoai[1].Ten, "axzc xz czxaaa");
+		strcpy (tu1.TuLoai[1].Nghia[0], "vv cxz cxzvv");
+	strcpy (tu1.TuLoai[1].Nghia[1], "vcxzczx vvv");
+	strcpy (tu1.TuLoai[1].Nghia[2], "vvxz cvv");
+	strcpy (tu1.TuLoai[1].Nghia[3], "vvxz cxz vv");
+	
+	strcpy (tu1.TuLoai[2].Ten, "axzc xz czxaaa");
+		strcpy (tu1.TuLoai[2].Nghia[0], "vxz cxz cvvv");
+	strcpy (tu1.TuLoai[2].Nghia[1], "vvvx z xzv");
+	strcpy (tu1.TuLoai[2].Nghia[2], "vv xz cvv");
+	strcpy (tu1.TuLoai[2].Nghia[3], "vvx vv");
+	
+	strcpy (tu1.TuLoai[3].Ten, "axzc xz czxaaa");
+			strcpy (tu1.TuLoai[3].Nghia[0], "vxz cxz cvvv");
+	strcpy (tu1.TuLoai[2].Nghia[1], "vvvx z xzv");
+	strcpy (tu1.TuLoai[2].Nghia[2], "vv xz cvv");
+	strcpy (tu1.TuLoai[2].Nghia[3], "vvx vv");
+	
+	strcpy (tu1.TuLoai[4].Ten, "axzc xz czxaaa");
+			strcpy (tu1.TuLoai[4].Nghia[0], "vxz cxz cvvv");
+	strcpy (tu1.TuLoai[2].Nghia[1], "vvvx z xzv");
+	strcpy (tu1.TuLoai[2].Nghia[2], "vv xz cvv");
+	strcpy (tu1.TuLoai[2].Nghia[3], "vvx vv");
+	tu1.nTuLoai = 3;
+	tu1.TuLoai[0].nNghia = 4;
+	tu1.TuLoai[1].nNghia = 4;
+	tu1.TuLoai[2].nNghia = 4;
+	int i = 0;
+	while(1){
+		insert(t, tu1);
+		printf("%d\n", i++);
+	}
+		
+	nlr(t);
+	return 0;
+}

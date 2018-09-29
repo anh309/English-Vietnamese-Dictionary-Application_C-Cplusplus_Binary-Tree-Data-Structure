@@ -1,0 +1,91 @@
+#include <stdio.h>
+#include <string.h>
+	
+struct _TuLoai{
+	char Ten[50];
+	char Nghia[50][100];
+	int nNghia;
+};
+
+struct _Word{
+	char NghiaGoc[50];
+	char PhienAm[100];
+	_TuLoai TuLoai[5];
+	int nTuLoai;
+};
+
+_Word EmptyStruct;
+
+struct node
+{
+	_Word word;
+	struct node *pleft;
+	struct node *pright;
+};
+typedef node* tree;
+
+void init(tree &t)
+{
+	t = NULL;
+}
+
+void insert(tree &t, _Word data)
+{
+	if (t == NULL)
+	{
+		node *p = new node;
+		p->word = data;
+		p->pleft = p->pright = NULL;
+		t = p;
+	}
+	else
+	{
+		if (strcmp(t->word.NghiaGoc,  data.NghiaGoc) > 0)
+		{
+			insert(t->pleft, data);
+		}
+		else if (strcmp(t->word.NghiaGoc,  data.NghiaGoc) < 0)
+		{
+			insert(t->pright, data);
+		}
+	}
+}
+
+
+
+void nlr(tree t)
+{
+	if (t != NULL)
+	{
+		XuatDanhSachWord(t->data);
+		nlr(t->pleft);
+		nlr(t->pright);
+	}
+}
+
+void XuatDanhSachWord (_Word word){
+	int count = 1;
+
+	printf("%d: +Nghia goc: %s\n", count, word.NghiaGoc);
+	printf("   +Phien am: %s\n", word.PhienAm);
+
+		for (int j=0; j < word.nTuLoai; j++){
+			printf("   +Tu loai: %s\n", word.TuLoai[j].Ten);
+			for (int k=0; k<word.TuLoai[j].nNghia; k++)
+				printf("   	->Nghia %d: %s\n", k+1, word.TuLoai[j].Nghia[k]);
+		}
+		printf("\n");
+		count++;
+}
+int main(int argc, char *argv[])
+{
+	tree t;
+	init(t);
+
+	nlr(t);
+	_Word tu1;
+	strcpy (tu1.NghiaGoc, "hello");
+	strcpy (tu1.PhienAm, "@#@!");
+	
+	return 0;
+}

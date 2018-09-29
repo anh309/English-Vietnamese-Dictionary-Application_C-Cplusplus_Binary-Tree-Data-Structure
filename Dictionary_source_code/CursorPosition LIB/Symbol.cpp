@@ -1,0 +1,14 @@
+	char *TopLeft = "\u2554";
+	char *TopRight="\u2557";
+	char *BotLeft="\u255A";
+	char *BotRight="\u255D";
+	char *V_line="\u2551";
+	char *H_line="\u2550";
+	char *MiddleDown = "\u2566";
+	char *MiddleUp ="\u2569";
+	char *MiddleTurnRight="\u2560";
+	char *MiddleTurnLeft="\u2563";
+	char *PlusSym = "\u256C";
+	char *High_h = "\u2505";
+	char *Up_arr = "\u2191";
+	char *Down_arr = "\u2193";
