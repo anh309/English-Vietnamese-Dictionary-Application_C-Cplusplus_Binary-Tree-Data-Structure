@@ -4,5 +4,5 @@ A English-Vietnamese Dictionary Application using C/C++ with Binary Tree data st
 Giao diện chương trình hiển thị dưới ngôn ngữ việt nam, Chúng tôi đã sử dụng C-Free để viết và thực thi chương trình. 
 Chạy File "Main.cpp" để sử dụng chương trình.
 
-The GUI is displayed under Vietnamese language, We have used C-Free to write and compile my program.
+The GUI is displayed under Vietnamese language, We have used C-Free to write and compile this program.
 Open file "Main.cpp" to run and feel our result
