@@ -14,7 +14,7 @@ ___
 ## Deploment
 - The GUI is displayed under **Vietnamese language**
 - compile file `Main.cpp` to run and use the program.
-
-## Authors
+___
+# Authors
 - Pham Xuan Anh
 - Vu Hoang Minh Huy
