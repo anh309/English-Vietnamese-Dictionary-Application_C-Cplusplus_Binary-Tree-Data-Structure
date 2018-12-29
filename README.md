@@ -6,3 +6,5 @@ Chạy File "Main.cpp" để sử dụng chương trình.
 
 The GUI is displayed under Vietnamese language, We have used C-Free to write and compile this program.
 Open file "Main.cpp" to run and feel our result
+
+Teamate: Vu Hoang Minh Huy
