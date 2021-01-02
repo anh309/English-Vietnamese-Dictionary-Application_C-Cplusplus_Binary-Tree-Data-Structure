@@ -20,7 +20,7 @@ ___
 
 ## Deploment
 - Please note that GUI is displayed in **Vietnamese language**
-- Easy open `Main.exe` to run this program. Hope you enjoyit !
+- Easily open `Main.exe` to run this program. Hope you enjoy it!
 ___
 # Authors
 - Pham Xuan Anh
